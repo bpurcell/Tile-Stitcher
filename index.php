@@ -6,21 +6,28 @@
 //      php index.php 42.39506551565123 -71.16668701171875 42.32200108060305 -71.00326538085938 15
 //
 //
+ini_set('memory_limit', '2560M');
 
 $args = $_SERVER['argv'];
+foreach($args as &$arg)$arg = (float) $arg;
 
 $zoom = $args[5];
 
 $date = strtotime("now");
 
-$lat1 = floor((1 - log(tan(deg2rad($args[1])) + 1 / cos(deg2rad($args[1]))) / pi()) /2 * pow(2, $zoom));
-$lon1 = floor((($args[2] + 180) / 360) * pow(2, $zoom));
+$y1 = floor((1 - log(tan(deg2rad($args[1])) + 1 / cos(deg2rad($args[1]))) / pi()) /2 * pow(2, $zoom));
+$x1 = floor((($args[2] + 180) / 360) * pow(2, $zoom));
 
-$lat2 = floor((1 - log(tan(deg2rad($args[3])) + 1 / cos(deg2rad($args[3]))) / pi()) /2 * pow(2, $zoom));
-$lon2 = floor((($args[4] + 180) / 360) * pow(2, $zoom));
+$y2 = floor((1 - log(tan(deg2rad($args[3])) + 1 / cos(deg2rad($args[3]))) / pi()) /2 * pow(2, $zoom));
+$x2 = floor((($args[4] + 180) / 360) * pow(2, $zoom));
 
 // The name of THIS file
 define('SELF', pathinfo(__FILE__, PATHINFO_BASENAME));
+
+$question =  'this is going to curl '.(($x2-$x1)+1) * (($y2-$y1)+1).' images.  Are you sure you want to continue? (only n will stop it.  no)';
+$response = getInput($question);
+if($response == 'n' || $response == 'no') return;
+
 
 // Path to the front controller (this file)
 define('FCPATH', str_replace(SELF, '', __FILE__));
@@ -29,8 +36,9 @@ if (!is_dir(FCPATH.$date)) {
     mkdir(FCPATH.$date."/sourceimages", 0777, true); // true for recursive create
 }
 
-for( $c=$lat1; $c<($lat2+1); $c++ ) {
-    for( $i=$lon1; $i<($lon2+1); $i++ ) {
+
+for( $c=$y1; $c<($y2+1); $c++ ) {
+    for( $i=$x1; $i<($x2+1); $i++ ) {
         echo '.';
         $sourcecode = GetImageFromUrl("https://khms0.googleapis.com/kh?v=132&hl=en-US&x=$i&y=$c&z=$zoom"); // Google Satelitte
         //$sourcecode = GetImageFromUrl("https://a.tiles.mapbox.com/v3/bpurcell.map-im7uxt8h/$zoom/$i/$c.png");   // Mapbox
@@ -41,18 +49,24 @@ for( $c=$lat1; $c<($lat2+1); $c++ ) {
     }
 }
 
-$canvas = imagecreatetruecolor( 256+(256*($lon2-$lon1)), 256+(256*($lat2-$lat1)));
+$canvas = imagecreatetruecolor( 256+(256*($x2-$x1)), 256+(256*($y2-$y1)));
 
-for( $c=$lat1; $c<($lat2+1); $c++ ) {
-    for( $i=$lon1; $i<($lon2+1); $i++ ) {
+for( $c=$y1; $c<($y2+1); $c++ ) {
+    for( $i=$x1; $i<($x2+1); $i++ ) {
         echo '.';
         $$i = imagecreatefromjpeg(FCPATH.$date."/sourceimages/$c-$i.jpg");
-        imagecopy($canvas,$$i,($i-$lon1)*256,($c-$lat1)*256,0,0,256,256);
+        imagecopy($canvas,$$i,($i-$x1)*256,($c-$y1)*256,0,0,256,256);
         
     }
 }
 
 imagejpeg($canvas,FCPATH.$date.'/Final Image.jpg');
+
+function getInput($msg){
+  fwrite(STDOUT, "$msg: ");
+  $varin = trim(fgets(STDIN));
+  return $varin;
+}
 
 function GetImageFromUrl($link){
 
