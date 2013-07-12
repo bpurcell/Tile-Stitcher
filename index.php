@@ -1,4 +1,12 @@
 <?php
+//   
+//      This is sooooo silly.  But it takes a lat lon lat lon zoom level arguments too curl down some images and 
+//      like   
+//      Boston!     
+//      php index.php 42.39506551565123 -71.16668701171875 42.32200108060305 -71.00326538085938 15
+//
+//
+
 $args = $_SERVER['argv'];
 
 $zoom = $args[5];
@@ -24,7 +32,8 @@ if (!is_dir(FCPATH.$date)) {
 for( $c=$lat1; $c<($lat2+1); $c++ ) {
     for( $i=$lon1; $i<($lon2+1); $i++ ) {
         echo '.';
-        $sourcecode = GetImageFromUrl('https://khms0.googleapis.com/kh?v=132&hl=en-US&x='.$i.'&y='.$c.'&z='.$zoom);
+        $sourcecode = GetImageFromUrl("https://khms0.googleapis.com/kh?v=132&hl=en-US&x=$i&y=$c&z=$zoom"); // Google Satelitte
+        //$sourcecode = GetImageFromUrl("https://a.tiles.mapbox.com/v3/bpurcell.map-im7uxt8h/$zoom/$i/$c.png");   // Mapbox
 
         $savefile = fopen(FCPATH.$date."/sourceimages/$c-$i.jpg", 'w');
         fwrite($savefile, $sourcecode);
