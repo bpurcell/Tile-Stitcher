@@ -1,0 +1,32 @@
+<html>
+<head>
+  <title>Folder: /</title>
+  <link href='/ArcGIS/rest/ESRI.ArcGIS.Rest.css' rel='stylesheet' type='text/css'>
+  <meta name="keywords" content="ArcGIS Services Directory Root">
+</head>
+<body>
+<table width="100%" id="userTable">
+<tr>
+<td id="titlecell">ArcGIS Services Directory</td>
+</tr>
+</table>
+<table id="navTable" width="100%">
+<tbody>
+<tr valign="top">
+<td id="breadcrumbs">
+<a href="/ArcGIS/rest/services">Home</a> </td>
+<td align="right" id="help">
+<a href="http://services.arcgisonline.com/ArcGIS/SDK/REST/servicesdirectory.html" target="_blank">Help</a> | <a href="?f=help" target="_blank">API Reference</a></td>
+</tr>
+</tbody>
+</table>
+<div class='restHeader'>
+<h2>Folder: /</h2>
+</div>
+<div class='restBody'>
+<div class="restErrors">
+Invalid URL<br/>
+</div>
+</div>
+</body>
+</html>

@@ -13,9 +13,6 @@
  *
  *  This is sooooo silly.  But it takes a lat lon lat lon zoom-level and name arguments too curl down some images and then awesomely stitch them into hi-res maps for printing.  
  *  php index.php 42.39506551565123 -71.16668701171875 42.32200108060305 -71.00326538085938 15 boston
- *
- *
- *
  */
 
 
@@ -23,6 +20,7 @@
 ini_set('memory_limit', '2560M');
 define('SELF', pathinfo(__FILE__, PATHINFO_BASENAME));
 define('FCPATH', str_replace(SELF, '', __FILE__));
+$maptype = 'terrain';
 
 //
 // Processing the CLI args
@@ -51,10 +49,14 @@ if($response == 'n' || $response == 'no') return;
 //
 //  Set up the location to put the image.
 //
-if (!is_dir(FCPATH.$location)) {
+if (!is_dir(FCPATH.$location)):
     mkdir(FCPATH.$location, 0777, true); // Create Folder For images
     mkdir(FCPATH.$location."/sourceimages", 0777, true); // Create source image folder
-}
+else:
+    $location = $location.rand();
+    mkdir(FCPATH.$location, 0777, true); // Create Folder For images
+    mkdir(FCPATH.$location."/sourceimages", 0777, true); // Create source image folder
+endif;
 
 
 
@@ -65,15 +67,21 @@ for( $c=$y1; $c<($y2+1); $c++ ) {
     for( $i=$x1; $i<($x2+1); $i++ ) {
         echo '.';
         
-        //Select Photo source.  You can probably put anything that is xyz here...
-        $sourcecode = GetImageFromUrl("https://khms0.googleapis.com/kh?v=132&hl=en-US&x=$i&y=$c&z=$zoom"); // Google Satelitte
-        //$sourcecode = GetImageFromUrl("https://a.tiles.mapbox.com/v3/bpurcell.map-im7uxt8h/$zoom/$i/$c.png");   // Mapbox
+        $sources['satellite'] = "https://khms0.googleapis.com/kh?v=132&hl=en-US&x=$i&y=$c&z=$zoom"; // Google Satelitte
+        $sources['terrain'] = "http://server.arcgisonline.com/ArcGIS/rest/services/USA_Topo_Maps/MapServer/tile/$zoom/$c/$i"; // ESRI Terrain
+        $sources['road'] = "https://a.tiles.mapbox.com/v3/bpurcell.map-im7uxt8h/$zoom/$i/$c.png"; // mapbox gray
+        
 
+        $img = GetImageFromUrl($sources[$maptype]);
         $savefile = fopen(FCPATH.$location."/sourceimages/$c-$i.jpg", 'w');
-        fwrite($savefile, $sourcecode);
+        fwrite($savefile, $img);
         fclose($savefile);
     }
 }
+
+//
+//      Start the Stitching phase
+//
 
 // Create the big ol' canvas to copy the images into
 $canvas = imagecreatetruecolor( 256+(256*($x2-$x1)), 256+(256*($y2-$y1)));
@@ -111,6 +119,7 @@ function GetImageFromUrl($link){
     curl_close($ch);
     return $result;
 }
+
 
 
 
