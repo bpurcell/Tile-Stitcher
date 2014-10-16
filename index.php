@@ -17,10 +17,11 @@
 
 
 //  THE GD lib needs a lot of memory in order to stitch the photos together.  Remember to run this from the commandline.
-ini_set('memory_limit', '2560M');
+ini_set('memory_limit', '5160M');
 define('SELF', pathinfo(__FILE__, PATHINFO_BASENAME));
 define('FCPATH', str_replace(SELF, '', __FILE__));
-$maptype = 'terrain';
+$maptype = 'satellite';
+$maptype = 'satellite';
 
 //
 // Processing the CLI args
@@ -67,9 +68,26 @@ for( $c=$y1; $c<($y2+1); $c++ ) {
     for( $i=$x1; $i<($x2+1); $i++ ) {
         echo '.';
         
-        $sources['satellite'] = "https://khms0.googleapis.com/kh?v=132&hl=en-US&x=$i&y=$c&z=$zoom"; // Google Satelitte
+        $sources['satellite'] = "http://khm0.googleapis.com/kh?v=152&hl=en-US&x=$i&y=$c&z=$zoom"; // Google Satelitte
+        
+        //http://khm0.googleapis.com/kh?v=152&hl=en-US&x=155912&y=191234&z=19&token=51427
+        
         $sources['terrain'] = "http://server.arcgisonline.com/ArcGIS/rest/services/USA_Topo_Maps/MapServer/tile/$zoom/$c/$i"; // ESRI Terrain
         $sources['road'] = "https://a.tiles.mapbox.com/v3/bpurcell.map-im7uxt8h/$zoom/$i/$c.png"; // mapbox gray
+        //$sources['satelittemap'] = "https://a.tiles.mapbox.com/v3/bpurcell.ime9h8nf/$zoom/$i/$c.png"; // mapbox satelittle
+        
+        //http://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/tile/5/12/12
+        $sources['satelitt2'] = "http://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/tile/$zoom/$c/$i"; // ESRI
+
+        $sources['satelittemap'] = "https://a.tiles.mapbox.com/v3/brightrain.map-bpwe9yas/$zoom/$i/$c.png"; // mapbox satelittle
+        
+        $sources['moon'] = "http://mw1.google.com/mw-planetary/lunar/lunarmaps_v1/clem_bw/$zoom/$i/$c.jpg"; // mapbox satelittle
+        
+        
+        // stamen  
+        //http://b.tile.stamen.com/terrain/6/18/25.jpg
+        $sources['stamenterr'] = "http://b.tile.stamen.com/terrain/$zoom/$i/$c.jpg"; // mapbox satelittle  watercolor
+        $sources['stamenwater'] = "http://b.tile.stamen.com/watercolor/$zoom/$i/$c.jpg"; // mapbox satelittle  
         
 
         $img = GetImageFromUrl($sources[$maptype]);
@@ -87,9 +105,7 @@ for( $c=$y1; $c<($y2+1); $c++ ) {
 $canvas = imagecreatetruecolor( 256+(256*($x2-$x1)), 256+(256*($y2-$y1)));
 
 
-//
-//  Same loop as before to place the images and shift their location in the canvas.
-//
+
 for( $c=$y1; $c<($y2+1); $c++ ) {
     for( $i=$x1; $i<($x2+1); $i++ ) {
         echo '<>';
@@ -99,8 +115,27 @@ for( $c=$y1; $c<($y2+1); $c++ ) {
     }
 }
 
+
+
 //  Write the image
 imagejpeg($canvas,FCPATH.$location.'/Final Image.jpg');
+
+
+//// Create the big ol' canvas to copy the images into
+//$canvas = imagecreatetruecolor( 256+(256*($x2-$x1)), 256+(256*($y2-$y1)));
+//
+//for( $c=$y1; $c<($y2+1); $c++ ) {
+//    for( $i=$x1; $i<($x2+1); $i++ ) {
+//        echo '<>'.$i." ".$x1." ".$c." ".$y1."  ";
+//        $$i = imagecreatefrompng(FCPATH.$location."/sourceimages/$c-$i.png");
+//        imagecopy($canvas,$$i,($i-$x1)*256,($c-$y1)*256,0,0,256,256);
+//        
+//    }
+//}
+//
+////  Write the image
+//imagepng($canvas,FCPATH.$location.'/Final Image1.jpg');
+
 
 function getInput($msg){
   fwrite(STDOUT, "$msg: ");
