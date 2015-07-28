@@ -21,7 +21,7 @@ ini_set('memory_limit', '5160M');
 define('SELF', pathinfo(__FILE__, PATHINFO_BASENAME));
 define('FCPATH', str_replace(SELF, '', __FILE__));
 $maptype = 'satellite';
-$maptype = 'satellite';
+$maptype = 'mario';
 
 //
 // Processing the CLI args
@@ -74,6 +74,7 @@ for( $c=$y1; $c<($y2+1); $c++ ) {
         
         $sources['terrain'] = "http://server.arcgisonline.com/ArcGIS/rest/services/USA_Topo_Maps/MapServer/tile/$zoom/$c/$i"; // ESRI Terrain
         $sources['road'] = "https://a.tiles.mapbox.com/v3/bpurcell.map-im7uxt8h/$zoom/$i/$c.png"; // mapbox gray
+        $sources['mario'] = "https://a.tiles.mapbox.com/v4/duncangraham.552f58b0/$zoom/$i/$c.png?access_token=pk.eyJ1IjoiZHVuY2FuZ3JhaGFtIiwiYSI6IlJJcWdFczQifQ.9HUpTV1es8IjaGAf_s64VQ"
         //$sources['satelittemap'] = "https://a.tiles.mapbox.com/v3/bpurcell.ime9h8nf/$zoom/$i/$c.png"; // mapbox satelittle
         
         //http://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/tile/5/12/12

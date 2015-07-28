@@ -1,0 +1,57 @@
+-10.040181, 143.560709|1003|Australia/n
+        -19.140249, -68.683995|1004|A-377, Volcán Isluga National Park, Colchane, Tamarugal, Tarapaca, Chile/n
+        30.109104, 84.817876|1006|Coqen, Ngari, Xizang (Tibet), China/n
+        30.248502, 85.047215|1007|Coqen, Ngari, Xizang (Tibet), China/n
+        30.349926, 85.157309|1008|S206, Coqen, Ngari, Xizang (Tibet), China/n
+        -76.646349, 160.41473|1010|Antarctica/n
+        -71.924341, 25.157817|1012|Antarctica/n
+        29.14274, 90.513512|1014|307 Provincial Road, Nagarze, Shannan, Xizang (Tibet), China/n
+        45.351844, 53.524919|1017|Beyneu District, Mangystau, Kazakhstan/n
+        24.659177, 24.968061|1018|Al Kufrah, Libya/n
+        23.604734, 25.315547|1019|Qesm Al Wahat Ad Dakhlah, New Valley Governorate, Egypt/n
+        43.536867, -102.360299|1021|Unnamed Road, Porcupine, East Shannon, Shannon County, South Dakota, United States, 57772/n
+        35.286769, 100.291448|1022|Tongde, Hainan, Qinghai, China/n
+        33.68746, 79.859533|1023|219 National Road, Rutog, Ngari, Xizang (Tibet), China/n
+        32.688049, 22.87596|1024|Libya/n
+        18.431694, 21.068799|1026|Ennedi, Chad/n
+        24.936413, -76.333179|1027|Meridian Highway, South Eleuthera, The Bahamas/n
+        -17.369726, -145.549783|1032|Tuamotus Islands, The Tuamotu and Gambier Islands, French Polynesia/n
+        41.989079, -87.901827|1033|1-99, Chicago O'Hare International Airport, Upper Level T1 St, O'Hare, Chicago, Cook County, Illinois, United States, 60666/n
+        39.39742, -121.141797|1034|Road 169, Plumas National Forest, Camptonville, Yuba County, California, United States, 95922/n
+        50.915255, 6.491187|1035|Eisbeerenweg, Niederzier, Cologne, North Rhine-Westphalia, Germany, 52382/n
+        60.997524, -45.010386|1036|Kujalleq, Greenland/n
+        64.181119, -17.140045|1037|Skaftafelljökull Trail, Vatnajökull National Park, Iceland/n
+        45.962714, 7.724891|1038|1-1, Bahnhof Gornergrat, Zermatt, Visp, Valais, Switzerland, 3920/n
+        45.946972, 7.853036|1039|129, Centro Abitato Pecetto, Macugnaga, Verbano-Cusio-Ossola, Piedmont, Italy, 28876/n
+        46.054866, 7.973993|1040|Furggu, Saas-Almagell, Visp, Valais, Switzerland, 3905/n
+        80.884801, -82.867126|1041|X0A, Nunavut, Canada/n
+        40.812713, -112.649732|1046|Unnamed Road, Tooele County, Utah, United States/n
+        40.831581, -112.609434|1047|West West Stansbury Causeway Road, Tooele County, Utah, United States/n
+        41.306577, -113.015885|1048|Lower Hogup Finger Road, Box Elder County, Utah, United States/n
+        41.505554, -112.772333|1049|Unnamed Road, Box Elder County, Utah, United States/n
+        41.432562, -112.104795|1050|Unnamed Road, Corinne, Box Elder County, Utah, United States, 84307/n
+        40.938934, -112.032394|1052|Davis County, Utah, United States/n
+        40.665112, -112.365546|1053|Lincoln Highway, Grantsville, Tooele County, Utah, United States, 84029/n
+        40.725633, -112.49794|1054|Unnamed Road, Grantsville, Tooele County, Utah, United States, 84029/n
+        40.812193, -112.661517|1055|Unnamed Road, Tooele County, Utah, United States/n
+        40.781728, -112.622872|1056|Unnamed Road, Tooele County, Utah, United States/n
+        39.532597, 2.587215|1057|7, Carrer Cala Contesa, Calvià, Balearic Islands, Balearic Islands, Spain, 07181/n
+        36.956476, 99.857483|1063|Huanhu West Road, Gangca, Haibei, Qinghai, China/n
+        36.72994, 99.895484|1064|G109, Gonghe, Hainan, Qinghai, China/n
+        36.654612, 100.473769|1065|151号, 109 National Road, Gonghe, Hainan, Qinghai, China/n
+        36.94742, 100.50705|1066|310省道, Haiyan, Haibei, Qinghai, China/n
+        36.746482, 100.70961|1067|310省道, Haiyan, Haibei, Qinghai, China/n
+        36.180008, 100.8078|1068|X304, Gonghe, Hainan, Qinghai, China/n
+        35.270342, 98.689198|1069|Madoi, Golog, Qinghai, China/n
+        34.96925, 97.094421|1070|Qumarleb, Yushu, Qinghai, China/n
+        31.923391, 83.117709|1071|Gerze, Ngari, Xizang (Tibet), China/n
+        46.666756, 61.502323|1074|Magzhan Zhumabaev, Aralsk, Aral District, Kyzylorda Province, Kazakhstan/n
+        37.002237, 99.895136|1075|Huanhu West Road, Gangca, Haibei, Qinghai, China/n
+        37.410572, 97.34001|1077|West Ring Road, Delhi, Haixi, Qinghai, China/n
+        37.327917, 97.158054|1078|S20 Dexiao Expressway Exit, Delhi, Haixi, Qinghai, China/n
+        37.259966, 97.412352|1080|409 County Road, Delhi, Haixi, Qinghai, China/n
+        37.058462, 97.385798|1081|Airport Highway, Delhi, Haixi, Qinghai, China/n
+        36.954131, 95.629734|1082|Dulan, Haixi, Qinghai, China/n
+        37.679854, 93.374705|1084|315 National Road, Haixi, Qinghai, China/n
+        38.894614, 73.298504|1085|M41, Gorno-Badakhshan Autonomous Province, Tajikistan/n
+        
